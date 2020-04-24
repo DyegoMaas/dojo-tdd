@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
@@ -52,6 +53,16 @@ namespace TddTests
 
             soma.Should().Be(resultadoEsperado);
         }
+
+        [Theory]
+        [InlineData("1\n,2")]
+        [InlineData("1,\n2")]
+        public void Deve_atirar_uma_excecao_se_colocar_um_delimitador_apos_o_outro(string numeros)
+        {
+            var adicionar = new Action(() => _calculadora.Adicionar(numeros));
+
+            adicionar.Should().Throw<InvalidOperationException>();
+        }
     }
 
     public class StringCalculator
@@ -62,9 +73,10 @@ namespace TddTests
             {
                 return 0;
             }
-            
+
+            var delimitadores = new[] {',', '\n'};
             var soma = input
-                .Split(",")
+                .Split(delimitadores)
                 .Select(int.Parse)
                 .Sum();
             return soma;
