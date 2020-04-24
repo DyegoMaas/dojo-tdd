@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -10,16 +10,14 @@ namespace TddTests
 
         public UnitTest1()
         {
-            
             _calculadora = new StringCalculator();
-
         }
+        
         [Fact]
         public void Deve_retornar_zero_quando_o_input_for_vazio()
         {
+            var soma = _calculadora.Adicionar("");
             
-            int soma = _calculadora.Adicionar("");
-
             soma.Should().Be(0);
         }
 
@@ -29,10 +27,11 @@ namespace TddTests
         [InlineData("15", 15)]
         public void Deve_retornar_o_mesmo_numero_se_ele_vier_sozinho(string numeros, int resultadoEsperado)
         {          
-            int soma = _calculadora.Adicionar(numeros);
+            var soma = _calculadora.Adicionar(numeros);
 
             soma.Should().Be(resultadoEsperado);
         }
+        
         [Theory]
         [InlineData("1,2", 3)]
         [InlineData("10, 1", 11)]
@@ -43,20 +42,32 @@ namespace TddTests
 
             soma.Should().Be(resultadoEsperado);
         }
+        
+        [Theory]
+        [InlineData("10\n1", 11)]
+        [InlineData("-15\n-25,1", -39)]
+        public void Deve_aceitar_barra_n_como_limitador(string numeros, int resultadoEsperado)
+        {
+            int soma = _calculadora.Adicionar(numeros);
+
+            soma.Should().Be(resultadoEsperado);
+        }
     }
 
     public class StringCalculator
     {
-        public int Adicionar(string numeros)
+        public int Adicionar(string input)
         {
-            if (numeros == string.Empty)
+            if (input == string.Empty)
             {
                 return 0;
             }
-            else
-            {
-                return int.Parse(numeros);
-            }
+            
+            var soma = input
+                .Split(",")
+                .Select(int.Parse)
+                .Sum();
+            return soma;
         }
     }
 }
