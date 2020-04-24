@@ -63,6 +63,16 @@ namespace TddTests
 
             adicionar.Should().Throw<InvalidOperationException>();
         }
+
+        [Theory]
+        [InlineData("//;\n1;2", 3)]
+        [InlineData("//?\n3?12", 15)]
+        public void Deve_aceitar_delimitadores_customizados(string numeros, int resultadoEsperado)
+        {
+            int soma = _calculadora.Adicionar(numeros);
+
+            soma.Should().Be(resultadoEsperado);
+        }
     }
 
     public class StringCalculator
@@ -73,7 +83,10 @@ namespace TddTests
             {
                 return 0;
             }
-
+            if (input.IndexOf(",\n") > 0 || input.IndexOf("\n,") > 0)
+            {
+                throw new InvalidOperationException();
+            }
             var delimitadores = new[] {',', '\n'};
             var soma = input
                 .Split(delimitadores)
