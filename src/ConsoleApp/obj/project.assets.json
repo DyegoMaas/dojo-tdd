@@ -1,0 +1,88 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "RegrasNegocio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/RegrasNegocio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RegrasNegocio.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RegrasNegocio/1.0.0": {
+      "type": "project",
+      "path": "../RegrasNegocio/RegrasNegocio.csproj",
+      "msbuildProject": "../RegrasNegocio/RegrasNegocio.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "RegrasNegocio >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\eduardo.anjos\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\eduardo.anjos\\Desktop\\cS-dojo\\dojo-tdd\\src\\ConsoleApp\\ConsoleApp.csproj",
+      "projectName": "ConsoleApp",
+      "projectPath": "C:\\Users\\eduardo.anjos\\Desktop\\cS-dojo\\dojo-tdd\\src\\ConsoleApp\\ConsoleApp.csproj",
+      "packagesPath": "C:\\Users\\eduardo.anjos\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\eduardo.anjos\\Desktop\\cS-dojo\\dojo-tdd\\src\\ConsoleApp\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\eduardo.anjos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "C:\\Users\\eduardo.anjos\\Desktop\\cS-dojo\\dojo-tdd\\src\\RegrasNegocio\\RegrasNegocio.csproj": {
+              "projectPath": "C:\\Users\\eduardo.anjos\\Desktop\\cS-dojo\\dojo-tdd\\src\\RegrasNegocio\\RegrasNegocio.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
